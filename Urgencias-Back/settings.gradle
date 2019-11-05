@@ -1,4 +1,4 @@
-rootProject.name = 'reto'
+rootProject.name = 'urgencias'
 
 include ':domain',
 		':application',

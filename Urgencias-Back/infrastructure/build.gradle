@@ -1,4 +1,5 @@
 buildscript {
+
 	repositories {
 		mavenCentral()
 	}
@@ -11,6 +12,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
     id 'jacoco'
+   	id 'eclipse'
+    
 }
 
 group = 'co.com.ceiba'
