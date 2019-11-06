@@ -1,5 +1,5 @@
-rootProject.name = 'urgencias'
+rootProject.name = 'cinema'
 
-include ':domain',
-		':application',
-        ':infrastructure'
+include ':aplicacion', 
+		':dominio', 
+		':infraestructura'
