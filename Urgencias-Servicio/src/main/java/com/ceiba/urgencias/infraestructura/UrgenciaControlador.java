@@ -1,44 +1,28 @@
 package com.ceiba.urgencias.infraestructura;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceiba.urgencias.dominio.UrgenciaServicio;
+import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
+import com.ceiba.urgencias.aplicacion.manejador.ManejadorCrearUrgencia;
 
 @RestController
+@RequestMapping(value = "/urgencias")
 public class UrgenciaControlador {
-	@Autowired
-	private UrgenciaServicio urgenciaServicio;
+
+	private final ManejadorCrearUrgencia manejadorCrearUrgencia;
+
+	public UrgenciaControlador(ManejadorCrearUrgencia manejadorCrearUrgencia) {
+		this.manejadorCrearUrgencia = manejadorCrearUrgencia;
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/agregarUrgencia")
-	public void agregarPersona(Urgencia urgencia) {
-		urgenciaServicio.agregarUrgencia(urgencia);
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/eliminarUrgencia/{ID}")
-	public void eliminarPersona(@PathVariable(name = "ID") Long id) {
-		urgenciaServicio.eliminarUrgencia(id);
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/obtenerUrgencias")
-	public List<Urgencia> obtenerPersonas() {
-		return urgenciaServicio.obtenerUrgencias();
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/buscarUrgencia/{ID}")
-	public Urgencia buscarPersona(@PathVariable(name = "ID") Long id) {
-		return urgenciaServicio.buscarUrgenciaIdPaciente(id);
+	public void agregarPersona(@RequestBody ComandoUrgencia comandoUrgencia) {
+		this.manejadorCrearUrgencia.ejecutar(comandoUrgencia);
 	}
 
 }

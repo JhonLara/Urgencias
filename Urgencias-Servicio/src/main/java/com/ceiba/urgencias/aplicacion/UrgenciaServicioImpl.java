@@ -11,47 +11,41 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ceiba.urgencias.dominio.UrgenciaRepositorio;
 import com.ceiba.urgencias.dominio.UrgenciaServicio;
-import com.ceiba.urgencias.infraestructura.Urgencia;
+import com.ceiba.urgencias.infraestructura.UrgenciaRepositorioJPA;
+import com.ceiba.urgencias.infraestructura.entidad.UrgenciaEntidad;
 
 @Service
 public class UrgenciaServicioImpl implements UrgenciaServicio {
 
 	@Autowired
-	private UrgenciaRepositorio urgenciaRepositorio;
+	private UrgenciaRepositorioJPA urgenciaRepositorioJPA;
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public static final String EL_LIBRO_NO_SE_ENCUENTRA_DISPONIBLE = "El libro no se encuentra disponible";
-	public static final String PALIDROMO = "los libros pal?ndromos solo se pueden utilizar en la biblioteca";
-	public static final String PRESTADO = "No hay libros disponibles para prestar";
-	public static final String NO_EXISTE = "El libro no existe";
-
 	@Override
-	public void agregarUrgencia(Urgencia urgencia) {
-		urgencia.setFechaIngreso(LocalDate.now());
+	public void agregarUrgencia(UrgenciaEntidad urgencia) {
 
 		try {
-			Optional<Urgencia> optUrgencia = urgenciaRepositorio.findById(urgencia.getIdPaciente());
-			Urgencia urgenciaActualizar = optUrgencia.get();
-			urgenciaRepositorio.save(urgenciaActualizar);
+			Optional<UrgenciaEntidad> optUrgencia = urgenciaRepositorioJPA.findById(urgencia.getIdPaciente());
+			UrgenciaEntidad urgenciaActualizar = optUrgencia.get();
+			urgenciaRepositorioJPA.save(urgenciaActualizar);
 		} catch (NoSuchElementException nse) {
 
-			urgenciaRepositorio.save(urgencia);
+			urgenciaRepositorioJPA.save(urgencia);
 		}
 
 	}
 
 	@Override
 	public void eliminarUrgencia(Long id) {
-		urgenciaRepositorio.deleteById(id);
+		urgenciaRepositorioJPA.deleteById(id);
 	}
 
 	@Override
-	public Urgencia buscarUrgenciaIdPaciente(Long id) {
+	public UrgenciaEntidad buscarUrgenciaIdPaciente(Long id) {
 		try {
-			Optional<Urgencia> optUrgencia = urgenciaRepositorio.findById(id);
+			Optional<UrgenciaEntidad> optUrgencia = urgenciaRepositorioJPA.findById(id);
 			return optUrgencia.get();
 		} catch (NoSuchElementException nse) {
 			return null;
@@ -60,7 +54,7 @@ public class UrgenciaServicioImpl implements UrgenciaServicio {
 	}
 
 	@Override
-	public List<Urgencia> obtenerUrgencias() {
+	public List<UrgenciaEntidad> obtenerUrgencias() {
 		String consultaUrgencias = "SELECT p FROM Persona p ";
 		return entityManager.createQuery(consultaUrgencias).getResultList();
 	}

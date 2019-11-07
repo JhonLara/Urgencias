@@ -2,16 +2,16 @@ package com.ceiba.urgencias.dominio;
 
 import java.util.List;
 
-import com.ceiba.urgencias.infraestructura.Urgencia;
+import com.ceiba.urgencias.infraestructura.entidad.UrgenciaEntidad;
 
 public interface UrgenciaServicio {
 
-	public void agregarUrgencia(Urgencia urgencia);
+	public void agregarUrgencia(UrgenciaEntidad urgencia);
 
 	public void eliminarUrgencia(Long id);
 
-	public Urgencia buscarUrgenciaIdPaciente(Long id);
+	public UrgenciaEntidad buscarUrgenciaIdPaciente(Long id);
 
-	public List<Urgencia> obtenerUrgencias();
+	public List<UrgenciaEntidad> obtenerUrgencias();
 
 }

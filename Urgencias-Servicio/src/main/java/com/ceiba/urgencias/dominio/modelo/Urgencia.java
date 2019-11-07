@@ -1,33 +1,13 @@
-package com.ceiba.urgencias.infraestructura;
+package com.ceiba.urgencias.dominio.modelo;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-@Table(name = "URGENCIA")
 public class Urgencia {
 
-	@Id
-	@Column(name = "ID_PACIENTE")
 	private Long idPaciente;
-
-	@Column(name = "NOMBRE_PERSONA")
 	private String nombrePersona;
-
-	@Column(name = "FECHA_INGRESO")
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate fechaIngreso;
-
-	@Column(name = "EPS")
 	private String eps;
-
-	@Column(name = "EPS_HOSPITALIZACION")
 	private boolean esHospitalizacion;
 
 	public Urgencia() {
