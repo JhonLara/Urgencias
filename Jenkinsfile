@@ -39,15 +39,15 @@ pipeline{
 			 
 			stage('Build project') { 
 			   steps { 
-					sh 'gradle --b ./Urgencias-Back/build.gradle clean'
-					sh 'gradle --b ./Urgencias-Back/build.gradle build'
+					sh 'gradle --b ./Urgencias-Servicio/build.gradle clean'
+					sh 'gradle --b ./Urgencias-Servicio/build.gradle build'
 				}
 			}
 
 			stage('Unit Test & Coverage') {
 				steps {
-				    sh 'gradle --b ./Urgencias-Back/build.gradle test'
-				    sh 'gradle --b ./Urgencias-Back/build.gradle jacocoTestReport'
+				    sh 'gradle --b ./Urgencias-Servicio/build.gradle test'
+				    sh 'gradle --b ./Urgencias-Servicio/build.gradle jacocoTestReport'
 				}
 			}          
 			
