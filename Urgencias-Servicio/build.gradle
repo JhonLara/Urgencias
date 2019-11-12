@@ -38,6 +38,7 @@ dependencies {
 	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0-M1'
 	testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.6.0-M1'
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+	testCompile 'junit:junit:4.12'
 	compileOnly 'org.projectlombok:lombok'
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
