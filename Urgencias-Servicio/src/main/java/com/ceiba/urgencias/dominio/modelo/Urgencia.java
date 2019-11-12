@@ -15,7 +15,6 @@ public class Urgencia {
 
 	public Urgencia(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
 			boolean esHospitalizacion) {
-		super();
 		this.idPaciente = idPaciente;
 		this.nombrePersona = nombrePersona;
 		this.fechaIngreso = fechaIngreso;
