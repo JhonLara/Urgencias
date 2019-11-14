@@ -2,6 +2,12 @@ package com.ceiba.urgencias.aplicacion.comando;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idPaciente")
 public class ComandoUrgencia {
 
 	private Long idPaciente;
@@ -10,17 +16,19 @@ public class ComandoUrgencia {
 	private String eps;
 	private boolean esHospitalizacion;
 
+	
+	
+	public ComandoUrgencia() {
+		super();
+	}
+
 	public ComandoUrgencia(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
 			boolean esHospitalizacion) {
-		super();
 		this.idPaciente = idPaciente;
 		this.nombrePersona = nombrePersona;
 		this.fechaIngreso = fechaIngreso;
 		this.eps = eps;
 		this.esHospitalizacion = esHospitalizacion;
-	}
-
-	public ComandoUrgencia() {
 	}
 
 	public Long getIdPaciente() {

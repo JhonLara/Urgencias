@@ -1,4 +1,4 @@
-package com.ceiba.urgencias.infraestructura;
+package com.ceiba.urgencias.infraestructura.controlador;
 
 import java.util.List;
 
@@ -47,13 +47,13 @@ public class UrgenciaControlador {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/eliminarUrgencia/{ID_PACIENTE}")
-	public void eliminarLibro(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
+	public void eliminarUrgencia(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
 		this.manejadorEliminarUrgencia.ejecutar(idPaciente);
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/obtenerUrgencias")
-	public List<Urgencia> obtenerLibrosDisponibles() {
+	public List<Urgencia> obtenerUrgencias() {
 		return manejadorConsultarUrgencias.ejecutar();
 	}
 

@@ -15,6 +15,6 @@ public class ServicioConsultarUrgencia {
 	}
 
 	public Urgencia ejecutar(Long idPaciente) {
-		return this.repositorioUrgencia.obtenerUrgencia(idPaciente);
+		return this.repositorioUrgencia.facturarrUrgencia(idPaciente);
 	}
 }

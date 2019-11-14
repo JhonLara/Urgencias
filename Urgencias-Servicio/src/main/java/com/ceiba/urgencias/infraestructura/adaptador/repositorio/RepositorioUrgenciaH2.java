@@ -45,7 +45,7 @@ public class RepositorioUrgenciaH2 implements RepositorioUrgencia {
 	}
 
 	@Override
-	public Urgencia obtenerUrgencia(Long idPaciente) {
+	public Urgencia facturarrUrgencia(Long idPaciente) {
 		Optional<UrgenciaEntidad> urgenciaEntidad = urgenciaRepositorioJPA.findById(idPaciente);
 		return urgenciaEntidad.isPresent() ? modelMapper.map(urgenciaEntidad.get(), Urgencia.class) : null;
 	}
