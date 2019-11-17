@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: '/agw-ayv/'
+  api_url: 'http://localhost:8080/'
 };
 
 /*

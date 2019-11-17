@@ -27,20 +27,26 @@ public class UrgenciaEntidad {
 	@Column(name = "EPS")
 	private String eps;
 
-	@Column(name = "EPS_HOSPITALIZACION")
-	private boolean esHospitalizacion;
+	@Column(name = "FECHA_HOSPITALIZACION")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate fechaHospitalizacion;
+	
+	@Column(name = "FECHA_CIRUGIA")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate fechaCirugia;
 
 	public UrgenciaEntidad() {
 	}
 
 	public UrgenciaEntidad(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
-			boolean esHospitalizacion) {
+			LocalDate fechaHospitalizacion, LocalDate fechaCirugia) {
 		super();
 		this.idPaciente = idPaciente;
 		this.nombrePersona = nombrePersona;
 		this.fechaIngreso = fechaIngreso;
 		this.eps = eps;
-		this.esHospitalizacion = esHospitalizacion;
+		this.fechaHospitalizacion = fechaHospitalizacion;
+		this.fechaCirugia= fechaCirugia;
 	}
 
 	public Long getIdPaciente() {
@@ -75,12 +81,21 @@ public class UrgenciaEntidad {
 		this.eps = eps;
 	}
 
-	public boolean isEsHospitalizacion() {
-		return esHospitalizacion;
+	public LocalDate getFechaHospitalizacion() {
+		return fechaHospitalizacion;
 	}
 
-	public void setEsHospitalizacion(boolean esHospitalizacion) {
-		this.esHospitalizacion = esHospitalizacion;
+	public void setFechaHospitalizacion(LocalDate fechaHospitalizacion) {
+		this.fechaHospitalizacion = fechaHospitalizacion;
 	}
+
+	public LocalDate getFechaCirugia() {
+		return fechaCirugia;
+	}
+
+	public void setFechaCirugia(LocalDate fechaCirugia) {
+		this.fechaCirugia = fechaCirugia;
+	}
+
 
 }

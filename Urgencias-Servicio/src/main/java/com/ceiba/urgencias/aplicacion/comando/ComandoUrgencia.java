@@ -6,29 +6,29 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idPaciente")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idPaciente")
 public class ComandoUrgencia {
 
 	private Long idPaciente;
 	private String nombrePersona;
 	private LocalDate fechaIngreso;
 	private String eps;
-	private boolean esHospitalizacion;
+	private LocalDate fechaHospitalizacion;
+	private LocalDate fechaCirugia;
 
-	
-	
 	public ComandoUrgencia() {
 		super();
 	}
 
 	public ComandoUrgencia(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
-			boolean esHospitalizacion) {
+			LocalDate fechaHospitalizacion, LocalDate fechaCirugia) {
 		this.idPaciente = idPaciente;
 		this.nombrePersona = nombrePersona;
 		this.fechaIngreso = fechaIngreso;
 		this.eps = eps;
-		this.esHospitalizacion = esHospitalizacion;
+		this.fechaHospitalizacion = fechaHospitalizacion;
+		this.fechaCirugia = fechaCirugia;
 	}
 
 	public Long getIdPaciente() {
@@ -47,7 +47,12 @@ public class ComandoUrgencia {
 		return eps;
 	}
 
-	public boolean isEsHospitalizacion() {
-		return esHospitalizacion;
+	public LocalDate getFechaHospitalizacion() {
+		return fechaHospitalizacion;
 	}
+
+	public LocalDate getFechaCirugia() {
+		return fechaCirugia;
+	}
+
 }

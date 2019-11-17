@@ -4,22 +4,38 @@ import java.time.LocalDate;
 
 public class Urgencia {
 
+	private static final String LA_ID_PACIENTE_ES_UN_DATO_OBLIGATORIO = "La identificación del paciente es un dato obligatorio.";
+	private static final String EL_NOMBRE_ES_UN_DATO_OBLIGATORIO = "El nombre del afiliado es un dato obligatorio.";
+	private static final String LA_FECHA_DE_INGRESO_ES_UN_DATO_OBLIGATORIO = "La fecha de ingreso del paciente es un dato obligatorio.";
+	public static final Long VALOR_DIA_URGENCIA = 50000L;
+	public static final Long VALOR_DIA_URGENCIA_FESTIVO = 60000L;
+	public static final Long VALOR_DIA_HOSPITALIZACION = 80000L;
+	public static final Long VALOR_DIA_HOSPITALIZACION_FESTIVO = 90000L;
+	public static final Long VALOR_CIRUGIA = 9000000L;
+
 	private Long idPaciente;
 	private String nombrePersona;
 	private LocalDate fechaIngreso;
 	private String eps;
-	private boolean esHospitalizacion;
+	private LocalDate fechaHospitalizacion;
+	private LocalDate fechaCirugia;
 
 	public Urgencia() {
 	}
 
 	public Urgencia(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
-			boolean esHospitalizacion) {
+			LocalDate fechaHospitalizacion, LocalDate fechaCirugia) {
+
+		ValidadorArgumento.validarObligatorio(idPaciente, LA_ID_PACIENTE_ES_UN_DATO_OBLIGATORIO);
+		ValidadorArgumento.validarObligatorio(nombrePersona, EL_NOMBRE_ES_UN_DATO_OBLIGATORIO);
+		ValidadorArgumento.validarObligatorio(fechaIngreso, LA_FECHA_DE_INGRESO_ES_UN_DATO_OBLIGATORIO);
+
 		this.idPaciente = idPaciente;
 		this.nombrePersona = nombrePersona;
 		this.fechaIngreso = fechaIngreso;
 		this.eps = eps;
-		this.esHospitalizacion = esHospitalizacion;
+		this.fechaHospitalizacion = fechaHospitalizacion;
+		this.fechaCirugia = fechaCirugia;
 	}
 
 	public Long getIdPaciente() {
@@ -54,12 +70,20 @@ public class Urgencia {
 		this.eps = eps;
 	}
 
-	public boolean isEsHospitalizacion() {
-		return esHospitalizacion;
+	public LocalDate getFechaHospitalizacion() {
+		return fechaHospitalizacion;
 	}
 
-	public void setEsHospitalizacion(boolean esHospitalizacion) {
-		this.esHospitalizacion = esHospitalizacion;
+	public void setFechaHospitalizacion(LocalDate fechaHospitalizacion) {
+		this.fechaHospitalizacion = fechaHospitalizacion;
+	}
+
+	public LocalDate getFechaCirugia() {
+		return fechaCirugia;
+	}
+
+	public void setFechaCirugia(LocalDate fechaCirugia) {
+		this.fechaCirugia = fechaCirugia;
 	}
 
 }

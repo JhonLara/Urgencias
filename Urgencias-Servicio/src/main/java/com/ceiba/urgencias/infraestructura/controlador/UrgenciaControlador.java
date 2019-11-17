@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
-import com.ceiba.urgencias.aplicacion.manejador.ManejadorConsultarUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorConsultarUrgencias;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorCrearUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorEliminarUrgencia;
+import com.ceiba.urgencias.aplicacion.manejador.ManejadorFacturarUrgencia;
+import com.ceiba.urgencias.dominio.modelo.Factura;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 
 @RestController
@@ -25,15 +26,15 @@ public class UrgenciaControlador {
 	private final ManejadorCrearUrgencia manejadorCrearUrgencia;
 	private final ManejadorEliminarUrgencia manejadorEliminarUrgencia;
 	private final ManejadorConsultarUrgencias manejadorConsultarUrgencias;
-	private final ManejadorConsultarUrgencia manejadorConsultarUrgencia;
+	private final ManejadorFacturarUrgencia manejadorFacturarUrgencia;
 
 	public UrgenciaControlador(ManejadorConsultarUrgencias manejadorConsultarUrgencias,
 			ManejadorEliminarUrgencia manejadorEliminarUrgencia, ManejadorCrearUrgencia manejadorCrearUrgencia,
-			ManejadorConsultarUrgencia manejadorConsultarUrgencia) {
+			ManejadorFacturarUrgencia manejadorFacturarUrgencia) {
 		this.manejadorCrearUrgencia = manejadorCrearUrgencia;
 		this.manejadorEliminarUrgencia = manejadorEliminarUrgencia;
 		this.manejadorConsultarUrgencias = manejadorConsultarUrgencias;
-		this.manejadorConsultarUrgencia = manejadorConsultarUrgencia;
+		this.manejadorFacturarUrgencia = manejadorFacturarUrgencia;
 
 	}
 
@@ -58,8 +59,8 @@ public class UrgenciaControlador {
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/obtenerUrgencia/{ID_PACIENTE}")
-	public Urgencia buscarUrgencia(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
-		return manejadorConsultarUrgencia.ejecutar(idPaciente);
+	@GetMapping("/facturarUrgencia/{ID_PACIENTE}")
+	public Factura facturarUrgencia(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
+		return manejadorFacturarUrgencia.ejecutar(idPaciente);
 	}
 }

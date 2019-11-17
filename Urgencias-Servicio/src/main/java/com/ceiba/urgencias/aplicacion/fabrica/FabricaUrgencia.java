@@ -10,6 +10,7 @@ public class FabricaUrgencia {
 
 	public Urgencia crearUrgencia(ComandoUrgencia comandoUrgencia) {
 		return new Urgencia(comandoUrgencia.getIdPaciente(), comandoUrgencia.getNombrePersona(),
-				comandoUrgencia.getFechaIngreso(), comandoUrgencia.getEps(), comandoUrgencia.isEsHospitalizacion());
+				comandoUrgencia.getFechaIngreso(), comandoUrgencia.getEps(), comandoUrgencia.getFechaHospitalizacion(),
+				comandoUrgencia.getFechaCirugia());
 	}
 }

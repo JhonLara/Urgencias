@@ -1,5 +1,6 @@
 package com.ceiba.urgencias.infraestructura.adaptador.repositorio;
 
+import com.ceiba.urgencias.dominio.modelo.Factura;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
 import com.ceiba.urgencias.infraestructura.UrgenciaRepositorioJPA;
@@ -44,8 +45,9 @@ public class RepositorioUrgenciaH2 implements RepositorioUrgencia {
 		return listaUrgencias;
 	}
 
+
 	@Override
-	public Urgencia facturarrUrgencia(Long idPaciente) {
+	public Urgencia obtenerUrgencia(Long idPaciente) {
 		Optional<UrgenciaEntidad> urgenciaEntidad = urgenciaRepositorioJPA.findById(idPaciente);
 		return urgenciaEntidad.isPresent() ? modelMapper.map(urgenciaEntidad.get(), Urgencia.class) : null;
 	}

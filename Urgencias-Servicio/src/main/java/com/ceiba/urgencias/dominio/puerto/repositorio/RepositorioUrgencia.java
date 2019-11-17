@@ -11,5 +11,5 @@ public interface RepositorioUrgencia {
 
 	List<Urgencia> obtenerUrgencias();
 
-	Urgencia facturarrUrgencia(Long idPaciente);
+	Urgencia obtenerUrgencia(Long idPaciente);
 }

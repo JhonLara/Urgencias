@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
-import { Item } from '@ceiba/navbar';
-
+import { Component } from "@angular/core";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
-  title = 'app-base';
-  public companies: Item[] = [
-    { url: '/home', nombre: 'home' },
-    { url: '/producto', nombre: 'producto' }
-    
-  ];
+export class AppComponent {  
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang("es");    
+    translate.use("es");
+  }
 
-  
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
 }

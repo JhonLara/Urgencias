@@ -1,30 +1,60 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpModule } from "@angular/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import {
+  ReactiveFormsModule,
+  FormsModule
+} from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './feature/home/home.component';
-import { ProductoModule } from './feature/producto/producto.module';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CoreModule } from './core/core.module';
-import { CookieService } from 'ngx-cookie-service';
-
-
-
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { UrgenciasComponent } from "./urgencias/urgencias.component";
+import { CrearUrgenciasComponent } from "./crear-urgencias/crear-urgencias.component";
+import { esLocale } from "ngx-bootstrap/locale";
+import { defineLocale } from "ngx-bootstrap/chronos";
+import es from "@angular/common/locales/es";
+import { registerLocaleData } from "@angular/common";
+import { LOCALE_ID } from "@angular/core";
+import { MostrarFacturaComponent } from './mostrar-factura/mostrar-factura.component';
+defineLocale("es", esLocale);
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    UrgenciasComponent,
+    CrearUrgenciasComponent,
+    MostrarFacturaComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
-    ProductoModule,
-    CoreModule
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [CookieService],
-    bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "es-ES"
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
