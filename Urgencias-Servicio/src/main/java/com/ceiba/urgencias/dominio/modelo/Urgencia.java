@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Urgencia {
 
-	private static final String LA_ID_PACIENTE_ES_UN_DATO_OBLIGATORIO = "La identificación del paciente es un dato obligatorio.";
+	private static final String LA_ID_PACIENTE_ES_UN_DATO_OBLIGATORIO = "La identificacion del paciente es un dato obligatorio.";
 	private static final String EL_NOMBRE_ES_UN_DATO_OBLIGATORIO = "El nombre del afiliado es un dato obligatorio.";
 	private static final String LA_FECHA_DE_INGRESO_ES_UN_DATO_OBLIGATORIO = "La fecha de ingreso del paciente es un dato obligatorio.";
 	public static final Long VALOR_DIA_URGENCIA = 50000L;
