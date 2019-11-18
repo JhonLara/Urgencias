@@ -10,7 +10,7 @@ import com.ceiba.urgencias.dominio.modelo.Urgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
 import java.time.temporal.ChronoUnit;
 
-@Service
+//@Service
 public class ServicioFacturarUrgencia {
 	private RepositorioUrgencia repositorioUrgencia;
 
@@ -25,9 +25,13 @@ public class ServicioFacturarUrgencia {
 		Long[] numeroDias = urgencia.getFechaHospitalizacion() != null
 				? obtenerDias(urgencia.getFechaIngreso(), urgencia.getFechaHospitalizacion())
 				: obtenerDias(urgencia.getFechaIngreso(), LocalDate.now());
+				
 		Long[] numeroDiasHospitalizacion = urgencia.getFechaHospitalizacion() != null
 				? obtenerDias(urgencia.getFechaHospitalizacion(), LocalDate.now())
 				: new Long[2];
+				
+				
+		//Eliminar y construir directo la factura con los validadores en el constructor
 		Factura factura = new Factura();
 
 		factura.setNumeroDias(numeroDias[0] + numeroDias[1]);
@@ -51,7 +55,7 @@ public class ServicioFacturarUrgencia {
 		return factura;
 	}
 
-	public Long[] obtenerDias(LocalDate fecha, LocalDate fechaFinal) {
+	private Long[] obtenerDias(LocalDate fecha, LocalDate fechaFinal) {
 		Long[] dias = new Long[2];
 		Long numeroDiasUrgencia = ChronoUnit.DAYS.between(fecha, fechaFinal);
 		Long diasHabiles = 0L;

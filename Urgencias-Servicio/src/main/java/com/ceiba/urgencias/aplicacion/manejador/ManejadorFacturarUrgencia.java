@@ -1,5 +1,7 @@
 package com.ceiba.urgencias.aplicacion.manejador;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.urgencias.dominio.modelo.Factura;
@@ -14,6 +16,8 @@ public class ManejadorFacturarUrgencia {
 		this.servicioFacturarUrgencia = servicioFacturarUrgencia;
 	}
 
+	//Asegurar transacción
+	@Transactional
 	public Factura ejecutar(Long idPaciente) {
 		return this.servicioFacturarUrgencia.ejecutar(idPaciente);
 	}

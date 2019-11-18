@@ -20,9 +20,6 @@ public class Urgencia {
 	private LocalDate fechaHospitalizacion;
 	private LocalDate fechaCirugia;
 
-	public Urgencia() {
-	}
-
 	public Urgencia(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
 			LocalDate fechaHospitalizacion, LocalDate fechaCirugia) {
 
