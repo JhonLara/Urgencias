@@ -1,5 +1,10 @@
 package com.ceiba.urgencias.dominio.servicio;
 
-public class ServicioGuardarUrgenciaTest {
+import org.junit.jupiter.api.Test;
 
+public class ServicioGuardarUrgenciaTest {
+	@Test
+	void crearUrgencia() {
+
+	}
 }
