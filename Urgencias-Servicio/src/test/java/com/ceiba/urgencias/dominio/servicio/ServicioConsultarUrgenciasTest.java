@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import com.ceiba.urgencias.BasePrueba;
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionObligatorio;
+import com.ceiba.urgencias.dominio.modelo.Factura;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
 
@@ -37,15 +38,23 @@ public class ServicioConsultarUrgenciasTest {
 	}
 
 	@Test
-	public void agregarUrgenciaExcepcion() {
+	public void facturarUrgencia() {
 
-		Urgencia urgencia = new Urgencia(null, "Carlos", LocalDate.now(), "SURA", LocalDate.now(), LocalDate.now());
+		Factura factura = new Factura(10L, 10L, 50000L, 40000L, 1000000L, 500000L, 400000L);
+		Urgencia urgencia = new Urgencia(100L, "Carlos", LocalDate.now(), "SURA", LocalDate.now(), LocalDate.now());
+
+		ServicioFacturarUrgencia servicioFacturarUrgencia = Mockito.mock(ServicioFacturarUrgencia.class);
+		Mockito.when(servicioFacturarUrgencia.ejecutar(100L)).thenReturn(factura);
+
 		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
-		// Act
-		ServicioCrearUrgencia servicioCrearUrgencia = new ServicioCrearUrgencia(repositorioUrgencia);
-		// Assert
-		BasePrueba.assertThrows(() -> servicioCrearUrgencia.ejecutar(urgencia), ExcepcionObligatorio.class,
-				"La pelicula ya existe en el sistema");
+		Mockito.when(repositorioUrgencia.obtenerUrgencia(100L)).thenReturn(urgencia);
+
+		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
+
+		// assert
+		Assertions.assertNotNull(factura);
+		Assertions.assertEquals(1000000L, facturaObtenida.getValorCirugia());
 
 	}
+
 }
