@@ -2,6 +2,7 @@ package com.ceiba.urgencias.dominio.puerto.repositorio;
 
 import java.util.List;
 
+import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 
 public interface RepositorioUrgencia {
@@ -9,7 +10,7 @@ public interface RepositorioUrgencia {
 
 	void eliminar(Long idPaciente);
 
-	List<Urgencia> obtenerUrgencias();
+	List<ComandoUrgencia> obtenerUrgencias();
 
-	Urgencia obtenerUrgencia(Long idPaciente);
+	ComandoUrgencia obtenerUrgencia(Long idPaciente);
 }

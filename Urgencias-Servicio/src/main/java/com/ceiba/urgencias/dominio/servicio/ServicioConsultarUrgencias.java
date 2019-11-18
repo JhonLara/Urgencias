@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ceiba.urgencias.dominio.modelo.Urgencia;
+import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
 
 @Service
@@ -16,7 +16,7 @@ public class ServicioConsultarUrgencias {
 		this.repositorioUrgencia = repositorioUrgencia;
 	}
 
-	public List<Urgencia> ejecutar() {
+	public List<ComandoUrgencia> ejecutar() {
 		return this.repositorioUrgencia.obtenerUrgencias();
 	}
 }

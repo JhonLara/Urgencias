@@ -31,6 +31,30 @@ public class ComandoUrgencia {
 		this.fechaCirugia = fechaCirugia;
 	}
 
+	public void setIdPaciente(Long idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+	public void setNombrePersona(String nombrePersona) {
+		this.nombrePersona = nombrePersona;
+	}
+
+	public void setFechaIngreso(LocalDate fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+
+	public void setEps(String eps) {
+		this.eps = eps;
+	}
+
+	public void setFechaHospitalizacion(LocalDate fechaHospitalizacion) {
+		this.fechaHospitalizacion = fechaHospitalizacion;
+	}
+
+	public void setFechaCirugia(LocalDate fechaCirugia) {
+		this.fechaCirugia = fechaCirugia;
+	}
+
 	public Long getIdPaciente() {
 		return idPaciente;
 	}

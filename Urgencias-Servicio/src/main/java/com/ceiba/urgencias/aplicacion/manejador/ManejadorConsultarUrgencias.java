@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ceiba.urgencias.dominio.modelo.Urgencia;
+import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
 import com.ceiba.urgencias.dominio.servicio.ServicioConsultarUrgencias;
 
 @Component
@@ -16,7 +16,7 @@ public class ManejadorConsultarUrgencias {
 		this.servicioConsultarUrgencias = servicioConsultarUrgencias;
 	}
 
-	public List<Urgencia> ejecutar() {
+	public List<ComandoUrgencia> ejecutar() {
 		return this.servicioConsultarUrgencias.ejecutar();
 	}
 }

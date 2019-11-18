@@ -16,7 +16,6 @@ public class ManejadorFacturarUrgencia {
 		this.servicioFacturarUrgencia = servicioFacturarUrgencia;
 	}
 
-	//Asegurar transacción
 	@Transactional
 	public Factura ejecutar(Long idPaciente) {
 		return this.servicioFacturarUrgencia.ejecutar(idPaciente);

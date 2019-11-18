@@ -17,7 +17,6 @@ import com.ceiba.urgencias.aplicacion.manejador.ManejadorCrearUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorEliminarUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorFacturarUrgencia;
 import com.ceiba.urgencias.dominio.modelo.Factura;
-import com.ceiba.urgencias.dominio.modelo.Urgencia;
 
 @RestController
 @RequestMapping(value = "/urgencias")
@@ -54,7 +53,7 @@ public class UrgenciaControlador {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/obtenerUrgencias")
-	public List<Urgencia> obtenerUrgencias() {
+	public List<ComandoUrgencia> obtenerUrgencias() {
 		return manejadorConsultarUrgencias.ejecutar();
 	}
 

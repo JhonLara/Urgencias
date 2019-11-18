@@ -2,13 +2,12 @@ package com.ceiba.urgencias.dominio.servicio;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-import org.springframework.stereotype.Service;
-
+import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
 import com.ceiba.urgencias.dominio.modelo.Factura;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
-import java.time.temporal.ChronoUnit;
 
 //@Service
 public class ServicioFacturarUrgencia {
@@ -21,36 +20,27 @@ public class ServicioFacturarUrgencia {
 
 	public Factura ejecutar(Long idPaciente) {
 
-		Urgencia urgencia = this.repositorioUrgencia.obtenerUrgencia(idPaciente);
+		ComandoUrgencia urgencia = this.repositorioUrgencia.obtenerUrgencia(idPaciente);
 		Long[] numeroDias = urgencia.getFechaHospitalizacion() != null
 				? obtenerDias(urgencia.getFechaIngreso(), urgencia.getFechaHospitalizacion())
 				: obtenerDias(urgencia.getFechaIngreso(), LocalDate.now());
-				
+
 		Long[] numeroDiasHospitalizacion = urgencia.getFechaHospitalizacion() != null
 				? obtenerDias(urgencia.getFechaHospitalizacion(), LocalDate.now())
-				: new Long[2];
-				
-				
-		//Eliminar y construir directo la factura con los validadores en el constructor
-		Factura factura = new Factura();
+				: new Long[] { 0L, 0L };
 
-		factura.setNumeroDias(numeroDias[0] + numeroDias[1]);
-		factura.setNumeroDiasHospitalizacion(numeroDiasHospitalizacion[0] + numeroDiasHospitalizacion[1]);
+		Factura factura = new Factura((numeroDias[0] + numeroDias[1]),
+				numeroDiasHospitalizacion[0] + numeroDiasHospitalizacion[1], Urgencia.VALOR_DIA_URGENCIA,
+				Urgencia.VALOR_DIA_HOSPITALIZACION, urgencia.getFechaCirugia() != null ? Urgencia.VALOR_CIRUGIA : 0L,
+				(numeroDias[0] * Urgencia.VALOR_DIA_URGENCIA) + (numeroDias[1] * Urgencia.VALOR_DIA_URGENCIA_FESTIVO),
+				(numeroDiasHospitalizacion[0] * Urgencia.VALOR_DIA_HOSPITALIZACION)
+						+ (numeroDiasHospitalizacion[1] * Urgencia.VALOR_DIA_HOSPITALIZACION_FESTIVO));
 
-		factura.setValorDiario(Urgencia.VALOR_DIA_URGENCIA);
-		factura.setValorDiarioHospitalizacion(Urgencia.VALOR_DIA_HOSPITALIZACION);
-		factura.setValorDiarioFestivo(Urgencia.VALOR_DIA_URGENCIA_FESTIVO);
-		factura.setValorDiarioHospitalizacionFestivo(Urgencia.VALOR_DIA_HOSPITALIZACION_FESTIVO);
-
-		factura.setValorCirugia(Urgencia.VALOR_CIRUGIA);
-
-		factura.setValorTotalHospitalizacion((factura.getValorDiarioHospitalizacion() * numeroDiasHospitalizacion[0])
-				+ (factura.getValorDiarioHospitalizacionFestivo() * numeroDiasHospitalizacion[1]));
-
-		factura.setValorTotalDiasSinHospitalizacion(
-				(numeroDias[0] * factura.getValorDiario()) + (numeroDias[1] * factura.getValorDiarioFestivo()));
 		factura.setValorTotal(factura.getValorTotalDiasSinHospitalizacion() + factura.getValorTotalHospitalizacion()
 				+ factura.getValorCirugia());
+
+		factura.setValorDiarioFestivo(Urgencia.VALOR_DIA_URGENCIA_FESTIVO);
+		factura.setValorDiarioHospitalizacionFestivo(Urgencia.VALOR_DIA_HOSPITALIZACION_FESTIVO);
 
 		return factura;
 	}

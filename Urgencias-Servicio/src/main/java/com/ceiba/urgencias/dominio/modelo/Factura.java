@@ -2,6 +2,8 @@ package com.ceiba.urgencias.dominio.modelo;
 
 public class Factura {
 
+	private static final String EL_NUMERO_DEBE_SER_MAYOR_A_CERO = "El numero debe de ser mayor a cero.";
+
 	private Long numeroDias;
 	private Long numeroDiasHospitalizacion;
 	private Long valorDiario;
@@ -18,6 +20,15 @@ public class Factura {
 
 	public Factura(Long numeroDias, Long numeroDiasHospitalizacion, Long valorDiario, Long valorDiarioHospitalizacion,
 			Long valorCirugia, Long valorTotalDiasSinHospitalizacion, Long valorTotalHospitalizacion) {
+
+		ValidadorArgumento.validarObligatorio(numeroDias, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(numeroDiasHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(valorDiario, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(valorDiarioHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(valorCirugia, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(valorTotalDiasSinHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarObligatorio(valorTotalHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+
 		this.numeroDias = numeroDias;
 		this.numeroDiasHospitalizacion = numeroDiasHospitalizacion;
 		this.valorDiario = valorDiario;
