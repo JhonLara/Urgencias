@@ -39,7 +39,7 @@ public class ServicioConsultarUrgenciasTest {
 	@Test
 	public void agregarUrgenciaExcepcion() {
 
-		Urgencia urgencia = new Urgencia(100L, "Carlos", LocalDate.now(), "SURA", LocalDate.now(), LocalDate.now());
+		Urgencia urgencia = new Urgencia(null, "Carlos", LocalDate.now(), "SURA", LocalDate.now(), LocalDate.now());
 		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
 		// Act
 		ServicioCrearUrgencia servicioCrearUrgencia = new ServicioCrearUrgencia(repositorioUrgencia);
