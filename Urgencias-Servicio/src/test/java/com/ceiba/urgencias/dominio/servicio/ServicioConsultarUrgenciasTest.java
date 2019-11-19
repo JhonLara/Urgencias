@@ -22,9 +22,9 @@ public class ServicioConsultarUrgenciasTest {
 		List<ComandoUrgencia> listaUrgencias = new ArrayList<ComandoUrgencia>();
 		listaUrgencias.add(urgenciaCreada);
 		Mockito.when(repositorioUrgencia.obtenerUrgencias()).thenReturn(listaUrgencias);
-		ServicioConsultarUrgencias service = new ServicioConsultarUrgencias(repositorioUrgencia);
+		ServicioConsultarUrgencias servicio = new ServicioConsultarUrgencias(repositorioUrgencia);
 
-		List<ComandoUrgencia> results = service.ejecutar();
+		List<ComandoUrgencia> results = servicio.ejecutar();
 
 		assertFalse(results.isEmpty());
 	}

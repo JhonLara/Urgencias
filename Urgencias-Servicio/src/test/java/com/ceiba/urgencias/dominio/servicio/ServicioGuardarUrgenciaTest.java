@@ -14,9 +14,9 @@ public class ServicioGuardarUrgenciaTest {
 	void crearUrgencia() {
 		Urgencia urgencia = new UrgenciaTestDataBuilder().build();
 		RepositorioUrgencia repositorioUrgencia = mock(RepositorioUrgencia.class);
-		ServicioCrearUrgencia service = new ServicioCrearUrgencia(repositorioUrgencia);
+		ServicioCrearUrgencia servicio = new ServicioCrearUrgencia(repositorioUrgencia);
 
-		assertDoesNotThrow(() -> service.ejecutar(urgencia));
+		assertDoesNotThrow(() -> servicio.ejecutar(urgencia));
 	}
 
 }

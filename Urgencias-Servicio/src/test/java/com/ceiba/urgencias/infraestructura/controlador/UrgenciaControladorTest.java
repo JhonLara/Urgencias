@@ -24,19 +24,35 @@ public class UrgenciaControladorTest {
 	void agregarUrgencia() {
 		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Jhon", LocalDate.now(), "SURA", LocalDate.now(),
 				LocalDate.now());
-		
-		UrgenciaControlador service = new UrgenciaControlador(manejadorConsultarUrgencias, manejadorEliminarUrgencia,
-				manejadorCrearUrgencia, manejadorFacturarUrgencia);
 
-		assertDoesNotThrow(() -> service.agregarUrgencia(urgencia));
+		UrgenciaControlador controlador = new UrgenciaControlador(manejadorConsultarUrgencias,
+				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
+
+		assertDoesNotThrow(() -> controlador.agregarUrgencia(urgencia));
 	}
 
 	@Test
 	void eliminarUrgencia() {
 		Long idPaciente = 1L;
-		UrgenciaControlador service = new UrgenciaControlador(manejadorConsultarUrgencias, manejadorEliminarUrgencia,
-				manejadorCrearUrgencia, manejadorFacturarUrgencia);
-		assertDoesNotThrow(() -> service.eliminarUrgencia(idPaciente));
+		UrgenciaControlador controlador = new UrgenciaControlador(manejadorConsultarUrgencias,
+				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
+		assertDoesNotThrow(() -> controlador.eliminarUrgencia(idPaciente));
+
+	}
+
+	@Test
+	void obtenerUrgencias() {
+		UrgenciaControlador controlador = new UrgenciaControlador(manejadorConsultarUrgencias,
+				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
+		assertDoesNotThrow(() -> controlador.obtenerUrgencias());
+
+	}
+
+	@Test
+	void facturarUrgencia() {
+		UrgenciaControlador controlador = new UrgenciaControlador(manejadorConsultarUrgencias,
+				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
+		assertDoesNotThrow(() -> controlador.facturarUrgencia(1L));
 
 	}
 }
