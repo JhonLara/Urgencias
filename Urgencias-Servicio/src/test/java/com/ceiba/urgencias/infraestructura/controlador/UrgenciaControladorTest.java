@@ -24,7 +24,7 @@ public class UrgenciaControladorTest {
 	void agregarUrgencia() {
 		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Jhon", LocalDate.now(), "SURA", LocalDate.now(),
 				LocalDate.now());
-
+		
 		UrgenciaControlador service = new UrgenciaControlador(manejadorConsultarUrgencias, manejadorEliminarUrgencia,
 				manejadorCrearUrgencia, manejadorFacturarUrgencia);
 

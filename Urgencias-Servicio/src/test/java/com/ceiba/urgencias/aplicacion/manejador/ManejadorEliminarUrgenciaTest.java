@@ -9,7 +9,7 @@ import com.ceiba.urgencias.dominio.servicio.ServicioEliminarUrgencia;
 
 public class ManejadorEliminarUrgenciaTest {
 	@Test
-	void execute() {
+	void ejecutar() {
 		ServicioEliminarUrgencia service = mock(ServicioEliminarUrgencia.class);
 		ManejadorEliminarUrgencia handler = new ManejadorEliminarUrgencia(service);
 

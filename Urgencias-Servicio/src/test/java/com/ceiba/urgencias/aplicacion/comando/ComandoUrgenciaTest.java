@@ -3,9 +3,9 @@ package com.ceiba.urgencias.aplicacion.comando;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
+
+import com.ceiba.urgencias.testdatabuilder.ComandoUrgenciaTestDataBuilder;
 
 public class ComandoUrgenciaTest {
 	@Test
@@ -21,8 +21,7 @@ public class ComandoUrgenciaTest {
 
 	@Test
 	void setters() {
-		ComandoUrgencia command = new ComandoUrgencia(100L, "Jhon", LocalDate.now(), "SURA", LocalDate.now(),
-				LocalDate.now());
+		ComandoUrgencia command = new ComandoUrgenciaTestDataBuilder().build();
 		command.setEps(null);
 		command.setFechaCirugia(null);
 		command.setFechaHospitalizacion(null);
@@ -36,9 +35,8 @@ public class ComandoUrgenciaTest {
 	}
 
 	@Test
-	void one_arg_constructor() {
-		ComandoUrgencia command = new ComandoUrgencia(100L, null, LocalDate.now(), "SURA", LocalDate.now(),
-				LocalDate.now());
+	void constructor() {
+		ComandoUrgencia command = new ComandoUrgenciaTestDataBuilder().build();
 		assertNull(command.getNombrePersona());
 		assertNotNull(command.getIdPaciente());
 	}

@@ -2,11 +2,8 @@ package com.ceiba.urgencias.dominio.modelo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import com.ceiba.urgencias.dominio.excepcion.ExcepcionFecha;
 
 public class FacturaTest {
 
@@ -18,7 +15,7 @@ public class FacturaTest {
 	}
 
 	@Test
-	void getter_setter() {
+	void gettersAndSetters() {
 
 		Long numeroDias = 12L;
 		Long numeHospitalizacion = 13L;

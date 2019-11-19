@@ -9,7 +9,6 @@ import com.ceiba.urgencias.dominio.modelo.Factura;
 import com.ceiba.urgencias.dominio.modelo.Urgencia;
 import com.ceiba.urgencias.dominio.puerto.repositorio.RepositorioUrgencia;
 
-//@Service
 public class ServicioFacturarUrgencia {
 	private RepositorioUrgencia repositorioUrgencia;
 

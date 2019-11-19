@@ -1,4 +1,4 @@
-package com.ceiba.urgencias.dominio.testdatabuilder;
+package com.ceiba.urgencias.testdatabuilder;
 
 import java.time.LocalDate;
 
@@ -13,12 +13,12 @@ public class UrgenciaTestDataBuilder {
 	private LocalDate fechaCirugia;
 
 	public UrgenciaTestDataBuilder() {
-		this.idPaciente = 100L;
-		this.nombrePersona = "Jhon";
-		this.fechaIngreso = LocalDate.now();
-		this.eps = "SURA";
-		this.fechaHospitalizacion = LocalDate.now();
-		this.fechaCirugia = LocalDate.now();
+		idPaciente = 100L;
+		nombrePersona = "Jhon";
+		fechaIngreso = LocalDate.now();
+		eps = "SURA";
+		fechaHospitalizacion = LocalDate.now();
+		fechaCirugia = LocalDate.now();
 	}
 
 	public Urgencia build() {

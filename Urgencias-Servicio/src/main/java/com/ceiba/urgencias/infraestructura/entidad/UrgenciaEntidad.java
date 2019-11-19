@@ -30,13 +30,10 @@ public class UrgenciaEntidad {
 	@Column(name = "FECHA_HOSPITALIZACION")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate fechaHospitalizacion;
-	
+
 	@Column(name = "FECHA_CIRUGIA")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate fechaCirugia;
-
-	public UrgenciaEntidad() {
-	}
 
 	public UrgenciaEntidad(Long idPaciente, String nombrePersona, LocalDate fechaIngreso, String eps,
 			LocalDate fechaHospitalizacion, LocalDate fechaCirugia) {
@@ -46,7 +43,7 @@ public class UrgenciaEntidad {
 		this.fechaIngreso = fechaIngreso;
 		this.eps = eps;
 		this.fechaHospitalizacion = fechaHospitalizacion;
-		this.fechaCirugia= fechaCirugia;
+		this.fechaCirugia = fechaCirugia;
 	}
 
 	public Long getIdPaciente() {
@@ -97,5 +94,7 @@ public class UrgenciaEntidad {
 		this.fechaCirugia = fechaCirugia;
 	}
 
+	public UrgenciaEntidad() {
+	}
 
 }

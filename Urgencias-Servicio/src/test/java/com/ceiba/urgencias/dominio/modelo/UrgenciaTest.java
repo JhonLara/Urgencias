@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionFecha;
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionMenorQueCero;
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionObligatorio;
-import com.ceiba.urgencias.dominio.testdatabuilder.UrgenciaTestDataBuilder;
+import com.ceiba.urgencias.testdatabuilder.UrgenciaTestDataBuilder;
 
 public class UrgenciaTest {
 	@Test
@@ -46,13 +46,13 @@ public class UrgenciaTest {
 	}
 
 	@Test
-	void getter_setter() {
+	void gettersAndSetters() {
 
 		Long numeroDocumento = 123L;
 		String nombre = "Jhon";
 		String eps = "SURA";
 		LocalDate fechaHoy = LocalDate.now();
-		Urgencia urgencia = new Urgencia(100L, "Jhon", fechaHoy, eps, fechaHoy, fechaHoy);
+		Urgencia urgencia = new UrgenciaTestDataBuilder().build();
 
 		urgencia.setEps(eps);
 		urgencia.setFechaCirugia(fechaHoy);
