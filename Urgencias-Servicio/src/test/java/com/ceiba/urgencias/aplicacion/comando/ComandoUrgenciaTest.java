@@ -37,7 +37,7 @@ public class ComandoUrgenciaTest {
 	@Test
 	void constructor() {
 		ComandoUrgencia command = new ComandoUrgenciaTestDataBuilder().build();
-		assertNull(command.getNombrePersona());
+		assertNotNull(command.getNombrePersona());
 		assertNotNull(command.getIdPaciente());
 	}
 
