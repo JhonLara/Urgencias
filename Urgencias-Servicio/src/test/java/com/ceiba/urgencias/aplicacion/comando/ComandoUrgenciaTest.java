@@ -20,6 +20,22 @@ public class ComandoUrgenciaTest {
 	}
 
 	@Test
+	void setters() {
+		ComandoUrgencia command = new ComandoUrgencia(100L, "Jhon", LocalDate.now(), "SURA", LocalDate.now(),
+				LocalDate.now());
+		command.setEps(null);
+		command.setFechaCirugia(null);
+		command.setFechaHospitalizacion(null);
+		command.setFechaIngreso(null);
+		command.setIdPaciente(null);
+		command.setNombrePersona(null);
+
+		assertNull(command.getFechaIngreso());
+		assertNull(command.getIdPaciente());
+
+	}
+
+	@Test
 	void one_arg_constructor() {
 		ComandoUrgencia command = new ComandoUrgencia(100L, null, LocalDate.now(), "SURA", LocalDate.now(),
 				LocalDate.now());
