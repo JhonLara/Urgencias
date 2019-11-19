@@ -15,21 +15,75 @@ public class ServicioFacturarUrgenciaTest {
 	@Test
 	public void facturarUrgencia() {
 
-		Factura factura = new Factura(10L, 10L, 50000L, 40000L, 1000000L, 500000L, 400000L);
 		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Carlos", LocalDate.now(), "SURA", LocalDate.now(),
 				LocalDate.now());
 
-		ServicioFacturarUrgencia servicioFacturarUrgencia = Mockito.mock(ServicioFacturarUrgencia.class);
-		Mockito.when(servicioFacturarUrgencia.ejecutar(100L)).thenReturn(factura);
-
 		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
+		ServicioFacturarUrgencia servicioFacturarUrgencia = new ServicioFacturarUrgencia(repositorioUrgencia);
+
 		Mockito.when(repositorioUrgencia.obtenerUrgencia(100L)).thenReturn(urgencia);
 
 		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
 
 		// assert
-		Assertions.assertNotNull(factura);
-		Assertions.assertEquals(1000000L, facturaObtenida.getValorCirugia());
+		Assertions.assertNotNull(facturaObtenida);
+		Assertions.assertNotNull(facturaObtenida.getValorCirugia());
 
 	}
+
+	@Test
+	public void facturarUrgenciaSinCirugia() {
+
+		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Carlos", LocalDate.now(), "SURA", LocalDate.now(), null);
+
+		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
+		ServicioFacturarUrgencia servicioFacturarUrgencia = new ServicioFacturarUrgencia(repositorioUrgencia);
+
+		Mockito.when(repositorioUrgencia.obtenerUrgencia(100L)).thenReturn(urgencia);
+
+		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
+
+		// assert
+		Assertions.assertNotNull(facturaObtenida);
+		Assertions.assertEquals(0L, facturaObtenida.getValorCirugia());
+
+	}
+
+	@Test
+	public void facturarUrgenciaSinHospitalizacion() {
+
+		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Carlos", LocalDate.now(), "SURA", null, LocalDate.now());
+
+		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
+		ServicioFacturarUrgencia servicioFacturarUrgencia = new ServicioFacturarUrgencia(repositorioUrgencia);
+
+		Mockito.when(repositorioUrgencia.obtenerUrgencia(100L)).thenReturn(urgencia);
+
+		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
+
+		// assert
+		Assertions.assertNotNull(facturaObtenida);
+		Assertions.assertEquals(0L, facturaObtenida.getValorTotalHospitalizacion());
+
+	}
+
+	@Test
+	public void facturarUrgenciaConFestivos() {
+
+		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Carlos", LocalDate.of(2019, 11, 1), "SURA",
+				LocalDate.of(2019, 11, 7), LocalDate.now());
+
+		RepositorioUrgencia repositorioUrgencia = Mockito.mock(RepositorioUrgencia.class);
+		ServicioFacturarUrgencia servicioFacturarUrgencia = new ServicioFacturarUrgencia(repositorioUrgencia);
+
+		Mockito.when(repositorioUrgencia.obtenerUrgencia(100L)).thenReturn(urgencia);
+
+		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
+
+		// assert
+		Assertions.assertNotNull(facturaObtenida);
+		Assertions.assertNotNull(facturaObtenida.getValorCirugia());
+		Assertions.assertTrue(facturaObtenida.getValorTotalHospitalizacion() > 0L);
+	}
+
 }

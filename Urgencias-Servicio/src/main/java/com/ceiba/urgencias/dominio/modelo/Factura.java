@@ -22,6 +22,15 @@ public class Factura {
 
 	public Factura(Long numeroDias, Long numeroDiasHospitalizacion, Long valorDiario, Long valorDiarioHospitalizacion,
 			Long valorCirugia, Long valorTotalDiasSinHospitalizacion, Long valorTotalHospitalizacion) {
+
+		ValidadorArgumento.validarMenorQueCero(numeroDias, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(numeroDiasHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(valorDiario, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(valorDiarioHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(valorCirugia, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(valorTotalDiasSinHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+		ValidadorArgumento.validarMenorQueCero(valorTotalHospitalizacion, EL_NUMERO_DEBE_SER_MAYOR_A_CERO);
+
 		this.numeroDias = numeroDias;
 		this.numeroDiasHospitalizacion = numeroDiasHospitalizacion;
 		this.valorDiario = valorDiario;

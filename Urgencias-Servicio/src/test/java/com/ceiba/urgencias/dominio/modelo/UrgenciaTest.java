@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionFecha;
+import com.ceiba.urgencias.dominio.excepcion.ExcepcionMenorQueCero;
 import com.ceiba.urgencias.dominio.excepcion.ExcepcionObligatorio;
 import com.ceiba.urgencias.dominio.testdatabuilder.UrgenciaTestDataBuilder;
 
@@ -29,6 +30,12 @@ public class UrgenciaTest {
 	void instanciaFechaIncorrecta() {
 		assertThrows(ExcepcionFecha.class, () -> new Urgencia(100L, "Jhon", LocalDate.now().plusDays(1L), "SURA",
 				LocalDate.now(), LocalDate.now()));
+	}
+
+	@Test
+	void instanciaNumeroMenorFactura() {
+		assertThrows(ExcepcionMenorQueCero.class,
+				() -> new Factura(100L, -10L, 15000L, 20000L, 15000000L, 200000L, 56000L));
 	}
 
 	@Test
