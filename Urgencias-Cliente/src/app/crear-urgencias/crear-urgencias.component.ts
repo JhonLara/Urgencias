@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class CrearUrgenciasComponent implements OnInit {
   public editing: boolean = false;
   private identificacion: number = null;
-  private eps: string= null;
+  private eps: string = null;
   private nombrePaciente: string = null;
   private fechaIngreso: number = null;
   public myForm: FormGroup;
@@ -35,7 +35,7 @@ export class CrearUrgenciasComponent implements OnInit {
       identificacion: new FormControl("identificacion", [Validators.required]),
       nombrePaciente: new FormControl("nombrePaciente", [Validators.required]),
       fechaIngreso: new FormControl("fechaIngreso", [Validators.required]),
-      eps: new FormControl("eps",[Validators.required])
+      eps: new FormControl("eps", [Validators.required])
     });
 
     if (null !== this.identificacion && undefined !== this.identificacion) {
@@ -43,9 +43,10 @@ export class CrearUrgenciasComponent implements OnInit {
       this.editing = true;
     }
 
-    if (null !== this.nombrePaciente && undefined !== this.nombrePaciente) {
-      this.myForm.controls["nombrePaciente"].setValue(this.nombrePaciente);
-    }
+    this.myForm.controls["nombrePaciente"].setValue("");
+
+    this.myForm.controls["eps"].setValue("");
+
 
     if (null !== this.fechaIngreso && undefined !== this.fechaIngreso) {
       this.myForm.controls["fechaIngreso"].setValue(this.fechaIngreso);
@@ -72,7 +73,7 @@ export class CrearUrgenciasComponent implements OnInit {
       eps: controls["eps"].value
     };
 
-    let url = `urgencias/agregarUrgencia`;
+    let url = `/api/urgencias/agregar-urgencia`;
 
     let data = {
       "eps": datosUrgencia.eps,
@@ -128,7 +129,8 @@ export class CrearUrgenciasComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        this.router.navigate(["/Urgencias"]);      }
+        this.router.navigate(["/Urgencias"]);
+      }
     });
   }
 

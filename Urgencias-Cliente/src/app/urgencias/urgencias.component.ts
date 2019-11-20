@@ -32,7 +32,7 @@ export class UrgenciasComponent implements OnInit {
    *
    */
   private getBooks() {
-    let url = `urgencias/obtenerUrgencias`;
+    let url = `/api/urgencias/obtener-urgencias`;
     this.service.queryExternalApi(url).subscribe(
       response => {
         let result = response.json();
@@ -60,7 +60,7 @@ export class UrgenciasComponent implements OnInit {
   }
 
   actualizar(urgencia: Urgencia, alerta: string) {
-    let url = `urgencias/agregarUrgencia`;
+    let url = `/api/urgencias/agregar-urgencia`;
 
     let data = {
       "eps": urgencia.eps,
@@ -133,7 +133,7 @@ export class UrgenciasComponent implements OnInit {
 
 
   private deleteBook(idPaciente) {
-    let url = `urgencias/eliminarUrgencia/${idPaciente}`;
+    let url = `/api/urgencias/eliminar-urgencia/${idPaciente}`;
     this.service.queryDeleteRegular(url).subscribe(
       response => {
         let result = response;

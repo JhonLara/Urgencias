@@ -2,7 +2,6 @@ package com.ceiba.urgencias.infraestructura.controlador;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,28 +36,22 @@ public class UrgenciaControlador {
 
 	}
 
-	// Proxy Reverse Angular
-	// ExceptionHandler
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/agregarUrgencia")
+	@PostMapping("/agregar-urgencia")
 	public void agregarUrgencia(@RequestBody ComandoUrgencia comandoUrgencia) {
 		this.manejadorCrearUrgencia.ejecutar(comandoUrgencia);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/eliminarUrgencia/{ID_PACIENTE}")
+	@DeleteMapping("/eliminar-urgencia/{ID_PACIENTE}")
 	public void eliminarUrgencia(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
 		this.manejadorEliminarUrgencia.ejecutar(idPaciente);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/obtenerUrgencias")
+	@GetMapping("/obtener-urgencias")
 	public List<ComandoUrgencia> obtenerUrgencias() {
 		return manejadorConsultarUrgencias.ejecutar();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/facturarUrgencia/{ID_PACIENTE}")
+	@GetMapping("/facturar-urgencia/{ID_PACIENTE}")
 	public Factura facturarUrgencia(@PathVariable(name = "ID_PACIENTE") Long idPaciente) {
 		return manejadorFacturarUrgencia.ejecutar(idPaciente);
 	}

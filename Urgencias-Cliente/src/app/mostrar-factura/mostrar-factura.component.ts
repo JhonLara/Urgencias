@@ -28,7 +28,7 @@ export class MostrarFacturaComponent implements OnInit {
     this.getFactura(this.id);
   }
   private getFactura(idPaciente: string) {
-    let url = `urgencias/facturarUrgencia/${idPaciente}`;
+    let url = `/api/urgencias/facturar-urgencia/${idPaciente}`;
     this.service.queryExternalApi(url).subscribe(
       response => {
         let result = response.json();
@@ -73,7 +73,7 @@ export class MostrarFacturaComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        let url = `urgencias/eliminarUrgencia/${idPaciente}`;
+        let url = `/api/urgencias/eliminar-urgencia/${idPaciente}`;
     this.service.queryDeleteRegular(url).subscribe(
       response => {
         let result = response;
