@@ -25,7 +25,6 @@ public class ServicioFacturarUrgenciaTest {
 
 		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
 
-		// assert
 		Assertions.assertNotNull(facturaObtenida);
 		Assertions.assertNotNull(facturaObtenida.getValorCirugia());
 
@@ -44,7 +43,6 @@ public class ServicioFacturarUrgenciaTest {
 
 		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
 
-		// assert
 		Assertions.assertNotNull(facturaObtenida);
 		Assertions.assertEquals(0L, facturaObtenida.getValorCirugia());
 
@@ -63,7 +61,6 @@ public class ServicioFacturarUrgenciaTest {
 
 		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
 
-		// assert
 		Assertions.assertNotNull(facturaObtenida);
 		Assertions.assertEquals(0L, facturaObtenida.getValorTotalHospitalizacion());
 
@@ -83,7 +80,6 @@ public class ServicioFacturarUrgenciaTest {
 
 		Factura facturaObtenida = servicioFacturarUrgencia.ejecutar(100L);
 
-		// assert
 		Assertions.assertNotNull(facturaObtenida);
 		Assertions.assertNotNull(facturaObtenida.getValorCirugia());
 		Assertions.assertTrue(facturaObtenida.getValorTotalHospitalizacion() > 0L);

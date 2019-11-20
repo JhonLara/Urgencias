@@ -24,7 +24,6 @@ public class ManejadorConsultarUrgenciasTest {
 		doReturn(listaUrgencias).when(service).ejecutar();
 		ManejadorConsultarUrgencias handler = new ManejadorConsultarUrgencias(service);
 
-		// act - assert
 		assertFalse(handler.ejecutar().isEmpty());
 	}
 }

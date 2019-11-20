@@ -61,7 +61,6 @@ public class UrgenciaTest {
 		urgencia.setIdPaciente(numeroDocumento);
 		urgencia.setNombrePersona(nombre);
 
-		// assert
 		assertEquals(nombre, urgencia.getNombrePersona());
 		assertEquals(eps, urgencia.getEps());
 		assertEquals(numeroDocumento, urgencia.getIdPaciente());

@@ -25,7 +25,6 @@ public class ManejadorFacturarUrgenciaTest {
 
 		ManejadorFacturarUrgencia handler = new ManejadorFacturarUrgencia(service);
 
-		// act - assert
 		assertNotNull(handler.ejecutar(100L));
 	}
 }

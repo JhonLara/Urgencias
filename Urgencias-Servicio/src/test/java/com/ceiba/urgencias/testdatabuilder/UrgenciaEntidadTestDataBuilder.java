@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import com.ceiba.urgencias.infraestructura.entidad.UrgenciaEntidad;
 
-public class UrgenciaEntidadDataBuilder {
+public class UrgenciaEntidadTestDataBuilder {
 	private Long idPaciente;
 	private String nombrePersona;
 	private LocalDate fechaIngreso;
@@ -12,7 +12,7 @@ public class UrgenciaEntidadDataBuilder {
 	private LocalDate fechaHospitalizacion;
 	private LocalDate fechaCirugia;
 
-	public UrgenciaEntidadDataBuilder() {
+	public UrgenciaEntidadTestDataBuilder() {
 		idPaciente = 100L;
 		nombrePersona = "Jhon";
 		fechaIngreso = LocalDate.now();

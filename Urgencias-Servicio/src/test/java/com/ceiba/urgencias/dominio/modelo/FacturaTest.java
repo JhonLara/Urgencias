@@ -5,11 +5,13 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
+import com.ceiba.urgencias.testdatabuilder.FacturaTestDataBuilder;
+
 public class FacturaTest {
 
 	@Test
 	void instanciaCorrecta() {
-		Factura factura = new Factura(123L, 10L, 20L, 50000L, 60000L, 7000L, 80000L);
+		Factura factura = new FacturaTestDataBuilder().build();
 
 		assertNotNull(factura);
 	}

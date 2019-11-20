@@ -3,8 +3,6 @@ package com.ceiba.urgencias.infraestructura.controlador;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.mock;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
 
 import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
@@ -12,6 +10,7 @@ import com.ceiba.urgencias.aplicacion.manejador.ManejadorConsultarUrgencias;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorCrearUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorEliminarUrgencia;
 import com.ceiba.urgencias.aplicacion.manejador.ManejadorFacturarUrgencia;
+import com.ceiba.urgencias.testdatabuilder.ComandoUrgenciaTestDataBuilder;
 
 public class UrgenciaControladorTest {
 
@@ -22,8 +21,7 @@ public class UrgenciaControladorTest {
 
 	@Test
 	void agregarUrgencia() {
-		ComandoUrgencia urgencia = new ComandoUrgencia(100L, "Jhon", LocalDate.now(), "SURA", LocalDate.now(),
-				LocalDate.now());
+		ComandoUrgencia urgencia = new ComandoUrgenciaTestDataBuilder().build();
 
 		UrgenciaControlador controlador = new UrgenciaControlador(manejadorConsultarUrgencias,
 				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
