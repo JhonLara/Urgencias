@@ -2,6 +2,8 @@ package com.ceiba.urgencias.aplicacion.manejador;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.urgencias.aplicacion.comando.ComandoUrgencia;
@@ -16,6 +18,7 @@ public class ManejadorConsultarUrgencias {
 		this.servicioConsultarUrgencias = servicioConsultarUrgencias;
 	}
 
+	@Transactional
 	public List<ComandoUrgencia> ejecutar() {
 		return this.servicioConsultarUrgencias.ejecutar();
 	}

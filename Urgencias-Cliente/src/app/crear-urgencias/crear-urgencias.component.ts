@@ -96,7 +96,7 @@ export class CrearUrgenciasComponent implements OnInit {
             confirmButtonText: this.translate.instant("buttons.ok"),
           }).then(result => {
 
-            this.router.navigate(["/Urgencias"]);
+            this.router.navigate(["/urgencias"]);
           });
         } else {
           swal({
@@ -129,7 +129,7 @@ export class CrearUrgenciasComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        this.router.navigate(["/Urgencias"]);
+        this.router.navigate(["/urgencias"]);
       }
     });
   }

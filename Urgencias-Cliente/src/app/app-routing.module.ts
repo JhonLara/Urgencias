@@ -9,9 +9,9 @@ const routes: Routes = [
   {
     path: "",
     children: [
-      { path: "Urgencias", component: UrgenciasComponent },
-      { path: "Urgencias-form", component: CrearUrgenciasComponent },
-      { path: "Factura/:id", component: MostrarFacturaComponent }
+      { path: "urgencias", component: UrgenciasComponent },
+      { path: "urgencia-form", component: CrearUrgenciasComponent },
+      { path: "factura/:id", component: MostrarFacturaComponent }
     ]
   }
 ];

@@ -24,14 +24,10 @@ export class UrgenciasComponent implements OnInit {
   constructor(private service: RestService, public translate: TranslateService, private router: Router) { }
 
   ngOnInit() {
-    this.getBooks();
+    this.getUrgencias();
   }
 
-  /**
-   * Gets the list of books in the inventory 
-   *
-   */
-  private getBooks() {
+  private getUrgencias() {
     let url = `/api/urgencias/obtener-urgencias`;
     this.service.queryExternalApi(url).subscribe(
       response => {
@@ -84,7 +80,7 @@ export class UrgenciasComponent implements OnInit {
             cancelButtonColor: "#d33",
             confirmButtonText: this.translate.instant("buttons.ok"),
           }).then(result => {
-            this.getBooks();
+            this.getUrgencias();
           });
         } else {
           swal({
@@ -126,19 +122,19 @@ export class UrgenciasComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        this.deleteBook(idPaciente);
+        this.eliminarUrgencia(idPaciente);
       }
     });
   }
 
 
-  private deleteBook(idPaciente) {
+  private eliminarUrgencia(idPaciente) {
     let url = `/api/urgencias/eliminar-urgencia/${idPaciente}`;
     this.service.queryDeleteRegular(url).subscribe(
       response => {
         let result = response;
         if (result) {
-          this.getBooks();
+          this.getUrgencias();
           swal({
             title: this.translate.instant("alerts.success"),
             text: this.translate.instant("alerts.deleted_book"),
@@ -182,7 +178,7 @@ export class UrgenciasComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        this.router.navigate(["/Factura/"+idPaciente]);
+        this.router.navigate(["/factura/" + idPaciente]);
       }
     });
   }

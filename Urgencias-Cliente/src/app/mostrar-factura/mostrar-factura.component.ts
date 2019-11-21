@@ -56,7 +56,7 @@ export class MostrarFacturaComponent implements OnInit {
       cancelButtonText: this.translate.instant("buttons.cancel")
     }).then(result => {
       if (result.value) {
-        this.router.navigate(["/Urgencias"]);
+        this.router.navigate(["/urgencias"]);
       }
     });
   }
@@ -78,7 +78,7 @@ export class MostrarFacturaComponent implements OnInit {
       response => {
         let result = response;
         if (result) {
-          this.router.navigate(["/Urgencias"]);
+          this.router.navigate(["/urgencias"]);
           swal({
             title: this.translate.instant("alerts.success"),
             text: this.translate.instant("alerts.factuar_exito"),

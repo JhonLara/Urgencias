@@ -27,6 +27,7 @@ public class UrgenciaControladorTest {
 				manejadorEliminarUrgencia, manejadorCrearUrgencia, manejadorFacturarUrgencia);
 
 		assertDoesNotThrow(() -> controlador.agregarUrgencia(urgencia));
+
 	}
 
 	@Test

@@ -17,9 +17,6 @@ public class Factura {
 	private Long valorTotalHospitalizacion;
 	private Long valorTotal;
 
-	public Factura() {
-	}
-
 	public Factura(Long numeroDias, Long numeroDiasHospitalizacion, Long valorDiario, Long valorDiarioHospitalizacion,
 			Long valorCirugia, Long valorTotalDiasSinHospitalizacion, Long valorTotalHospitalizacion) {
 

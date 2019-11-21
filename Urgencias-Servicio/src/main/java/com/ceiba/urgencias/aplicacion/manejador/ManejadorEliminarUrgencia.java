@@ -1,5 +1,7 @@
 package com.ceiba.urgencias.aplicacion.manejador;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.urgencias.dominio.servicio.ServicioEliminarUrgencia;
@@ -12,7 +14,7 @@ public class ManejadorEliminarUrgencia {
 
 		this.servicioEliminarUrgencia = servicioEliminarUrgencia;
 	}
-
+	@Transactional
 	public void ejecutar(Long idPaciente) {
 		this.servicioEliminarUrgencia.ejecutar(idPaciente);
 	}
