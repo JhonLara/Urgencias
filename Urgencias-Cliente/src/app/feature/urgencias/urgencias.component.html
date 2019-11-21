@@ -35,8 +35,8 @@
           <button id="botonEliminar" class="btn btn-danger" (click)="confirmDelete(urgencia.idPaciente)">{{"forms.delete" | translate}}</button>
         </td>
         <td>
-          <button class="btn btn-success" (click)="confirmFacturar(urgencia.idPaciente)">{{"forms.facturar" | translate}}</button>
-        </td>
+          <button id="botonFacturar" class="btn btn-success" (click)="confirmFacturar(urgencia.idPaciente)">{{"forms.facturar" | translate}}</button>
+        </td> 
         <td>
           <button class="btn btn-success" (click)="operar(urgencia)" [disabled]="urgencia.fechaCirugia">{{"forms.operar" | translate}}</button>
         </td>

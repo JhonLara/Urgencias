@@ -1,6 +1,7 @@
 package com.ceiba.urgencias.infraestructura.adaptador.repositorio;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -60,6 +61,18 @@ public class RespositorioUrgenciaH2Test {
 		repositorioUrgenciaH2.guardar(urgencia);
 		UrgenciaEntidad urgenciaEntidad = entityManager.find(UrgenciaEntidad.class, urgencia.getIdPaciente());
 		assertEquals(urgencia.getNombrePersona(), urgenciaEntidad.getNombrePersona());
+	}
+
+	@Test
+	void eliminarUrgencia() {
+
+		Urgencia urgencia = new UrgenciaTestDataBuilder().build();
+
+		repositorioUrgenciaH2.guardar(urgencia);
+
+		repositorioUrgenciaH2.eliminar(urgencia.getIdPaciente());
+		UrgenciaEntidad urgenciaEntidad = entityManager.find(UrgenciaEntidad.class, urgencia.getIdPaciente());
+		assertNull(urgenciaEntidad);
 	}
 
 }

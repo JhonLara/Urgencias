@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { RestService } from "../services/rest.service";
 import swal from "sweetalert2";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { RestService } from 'src/app/core/services/rest.service';
 
 @Component({
   selector: "app-create-books",

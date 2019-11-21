@@ -42,26 +42,28 @@ describe('Prueba flujo principal', function() {
     });
   });
 
-  describe('Devolver ventana crear urgencia', function() {
-    it('devolver creacion nueva urgencia', function() {
-      browser.get('http://localhost:4200/urgencia-form');
-      element(by.id('botonVolver')).click();
+
+  describe('Boton facturar urgencia', function() {
+    it('facturar urgencia', function() {
+      browser.get('http://localhost:4200/urgencias');
+  
+      element(by.id('botonFacturar')).click();
+      element(by.buttonText('SI')).click();
+
+
+      expect(browser.getCurrentUrl()).toBe('http://localhost:4200/factura/1094942293'); 
+    });
+  });
+
+  describe('Facturar', function() {
+    it('Facturar', function() {
+      browser.get('http://localhost:4200/factura/1094942293');
+      element(by.id('facturar')).click();
       element(by.buttonText('SI')).click();
       
   
       expect(browser.getCurrentUrl()).toBe('http://localhost:4200/urgencias'); 
     });
   })
-
-  describe('Boton eliminar urgencia', function() {
-    it('crear urgencia', function() {
-      browser.get('http://localhost:4200/urgencias');
-  
-      element(by.id('botonEliminar')).click();
-      element(by.buttonText('SI')).click();
-
-      expect(browser.getCurrentUrl()).toBe('http://localhost:4200/urgencias'); 
-    });
-  });
 
   ;

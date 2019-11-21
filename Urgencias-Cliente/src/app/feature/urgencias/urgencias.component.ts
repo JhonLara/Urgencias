@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../services/rest.service';
-import { Urgencia } from '../interfaces/urgencia';
+import { Urgencia } from '../../shared/interfaces/urgencia';
 import swal from "sweetalert2";
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { RestService } from 'src/app/core/services/rest.service';
 
 
 

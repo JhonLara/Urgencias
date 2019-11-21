@@ -11,14 +11,14 @@ import {
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { UrgenciasComponent } from "./urgencias/urgencias.component";
-import { CrearUrgenciasComponent } from "./crear-urgencias/crear-urgencias.component";
+import { UrgenciasComponent } from "./feature/urgencias/urgencias.component";
+import { CrearUrgenciasComponent } from "./feature/crear-urgencias/crear-urgencias.component";
 import { esLocale } from "ngx-bootstrap/locale";
 import { defineLocale } from "ngx-bootstrap/chronos";
 import es from "@angular/common/locales/es";
 import { registerLocaleData } from "@angular/common";
 import { LOCALE_ID } from "@angular/core";
-import { MostrarFacturaComponent } from './mostrar-factura/mostrar-factura.component';
+import { MostrarFacturaComponent } from './feature/mostrar-factura/mostrar-factura.component';
 defineLocale("es", esLocale);
 registerLocaleData(es);
 
