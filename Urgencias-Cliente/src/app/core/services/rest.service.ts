@@ -15,6 +15,7 @@ export class RestService {
     return repos;
   }
 
+  //Lazy loading
   queryDeleteRegular(route: string) {
     let repos = this.http.delete((route));
     return repos;

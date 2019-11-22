@@ -93,7 +93,7 @@ export class MostrarFacturaComponent implements OnInit {
         } else {
           swal({
             title: this.translate.instant("alerts.error"),
-            text: this.translate.instant("alerts.book_doesnt_exist"),
+            text: this.translate.instant("alerts.urgencia_doesnt_exist"),
             type: "error",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",

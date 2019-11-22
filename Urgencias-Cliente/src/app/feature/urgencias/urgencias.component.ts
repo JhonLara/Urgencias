@@ -85,7 +85,7 @@ export class UrgenciasComponent implements OnInit {
         } else {
           swal({
             title: this.translate.instant("alerts.error"),
-            text: this.translate.instant("alerts.cannot_delete_book"),
+            text: this.translate.instant("alerts.cannot_delete_urgencia"),
             type: "error",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",
@@ -137,7 +137,7 @@ export class UrgenciasComponent implements OnInit {
           this.getUrgencias();
           swal({
             title: this.translate.instant("alerts.success"),
-            text: this.translate.instant("alerts.deleted_book"),
+            text: this.translate.instant("alerts.deleted_urgencia"),
             type: "success",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",
@@ -149,7 +149,7 @@ export class UrgenciasComponent implements OnInit {
         } else {
           swal({
             title: this.translate.instant("alerts.error"),
-            text: this.translate.instant("alerts.book_doesnt_exist"),
+            text: this.translate.instant("alerts.urgencia_doesnt_exist"),
             type: "error",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",

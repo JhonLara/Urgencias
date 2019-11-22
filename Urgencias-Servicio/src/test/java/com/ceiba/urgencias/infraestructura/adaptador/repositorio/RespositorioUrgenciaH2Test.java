@@ -37,6 +37,7 @@ public class RespositorioUrgenciaH2Test {
 	@Autowired
 	private TestEntityManager entityManager;
 
+	//MockMVC para pruebas de integración
 	@Test
 	void obtenerUrgencias() {
 
@@ -57,9 +58,10 @@ public class RespositorioUrgenciaH2Test {
 	void agregarUrgencia() {
 
 		Urgencia urgencia = new UrgenciaTestDataBuilder().build();
-
 		repositorioUrgenciaH2.guardar(urgencia);
+		
 		UrgenciaEntidad urgenciaEntidad = entityManager.find(UrgenciaEntidad.class, urgencia.getIdPaciente());
+		
 		assertEquals(urgencia.getNombrePersona(), urgenciaEntidad.getNombrePersona());
 	}
 

@@ -1,4 +1,6 @@
 // spec.js
+
+//Patron page object
 describe('Prueba flujo principal', function() {
     it('should have a title', function() {
       browser.get('http://localhost:4200/');

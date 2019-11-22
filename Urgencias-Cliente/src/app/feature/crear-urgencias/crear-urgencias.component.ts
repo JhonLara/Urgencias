@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RestService } from 'src/app/core/services/rest.service';
 
 @Component({
-  selector: "app-create-books",
+  selector: "app-create-urgencias",
   templateUrl: "./crear-urgencias.component.html",
   styleUrls: ["./crear-urgencias.component.scss"]
 })
@@ -88,7 +88,7 @@ export class CrearUrgenciasComponent implements OnInit {
         if (result) {
           swal({
             title: this.translate.instant("alerts.success"),
-            text: this.translate.instant("alerts.stored_book"),
+            text: this.translate.instant("alerts.stored_urgencia"),
             type: "success",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",
@@ -101,7 +101,7 @@ export class CrearUrgenciasComponent implements OnInit {
         } else {
           swal({
             title: this.translate.instant("alerts.error"),
-            text: this.translate.instant("alerts.cannot_delete_book"),
+            text: this.translate.instant("alerts.cannot_delete_urgencia"),
             type: "error",
             showCancelButton: false,
             confirmButtonColor: "#3085d6",
@@ -117,7 +117,7 @@ export class CrearUrgenciasComponent implements OnInit {
   }
 
 
-  confirmVolver(bookIsbn) {
+  confirmVolver(idPaciente) {
     swal({
       title: this.translate.instant("alerts.confirm"),
       text: this.translate.instant("alerts.sure_to_volver"),
